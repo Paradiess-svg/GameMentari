@@ -1,0 +1,1 @@
+Rencana gua adalah tetep ada start yang diambil dari register dan kepanggil nama dari dashboard, langsung masuk ke soal, ters soalnya jawaban benar salahnay logicnya pakai php bukan js, langsung upload score jika benar

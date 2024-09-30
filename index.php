@@ -1,3 +1,9 @@
+<?php
+include 'config.php'; ?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +27,7 @@
     <header class="bg-[#EECEB9] p-[20px]">
         <div class="flex justify-between items-center">
             <img src="/img/title.png" alt="title" width="250" height="250">
-            <p class="bg-[#3F1451] text-white text-xl font-semibold px-8 py-2 rounded-full">Budi</p>
+            <p class="bg-[#3F1451] text-white text-xl font-semibold px-8 py-2 rounded-full"><b> <?php echo $_SESSION['nama'];?> </b></p>
         </div>
     </header>
 
@@ -83,8 +89,23 @@
                 </div>
             </div>
         </div>
-        <button class="bg-[#5F374B] text-white rounded-full py-2 px-8 mx-auto text-3xl mt-10" onclick="checkAnswers()">Check</button>
-        <div class="text-2xl mt-5" id="result"></div>
+        <form method="post" action="proses.php" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<?php echo $_SESSION['id'];?>"> <!-- ID pengguna -->
+        <input type="hidden" name="nama" value="<?php echo $_SESSION['nama'];?>"> <!-- Nama pengguna -->
+    <input type="text" id="option1" name="option1" placeholder="Your answer 1" required>
+    <input type="text" id="option2" name="option2" placeholder="Your answer 2" required>
+    <input type="text" id="option3" name="option3" placeholder="Your answer 3" required>
+    <input type="text" id="option4" name="option4" placeholder="Your answer 4" required>
+    
+    <input type="hidden" name="nilai" id="nilai" value="">
+    <button type="submit">Check</button>
+</form>
+
+
+<div id="result"></div> <!-- Untuk menampilkan hasil -->
+
+        <!-- <button class="bg-[#5F374B] text-white rounded-full py-2 px-8 mx-auto text-3xl mt-10" onclick="checkAnswers()">Check</button> -->
+        <!-- <div class="text-2xl mt-5" id="result"></div> -->
     </div>
 
     <footer class="flex justify-between px-10 mx-auto items-center">
@@ -92,7 +113,7 @@
             <p class="text-2xl font-semibold">00:00:15</p>
             <p class="text-xl">Kelas 2 - Semester 2</p>
         </div>
-        <button class="bg-[#EECEB9] text-[#5F374B] text-3xl font-bold py-2 px-8 flex flex-row items-center gap-2 rounded-full" onclick="location.href='/dragdrop'">
+        <button class="bg-[#EECEB9] text-[#5F374B] text-3xl font-bold py-2 px-8 flex flex-row items-center gap-2 rounded-full" onclick="" type="submit" name="aksi" value="nilai">
             NEXT
             <span>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-8">
@@ -101,5 +122,35 @@
             </span>
         </button>
     </footer>
+    <script>
+function checkAnswers() {
+    const answers = ['He', 'He', 'She', 'She'];
+    const userAnswers = [
+        document.getElementById('option1').value,
+        document.getElementById('option2').value,
+        document.getElementById('option3').value,
+        document.getElementById('option4').value,
+    ];
+
+    let correctCount = 0;
+
+    for (let i = 0; i < answers.length; i++) {
+        if (userAnswers[i] === answers[i]) {
+            correctCount++;
+        }
+    }
+
+
+    let resultText = `You got ${correctCount} out of ${answers.length} correct!`;
+
+    if (correctCount === answers.length) {
+        resultText += " Excellent!";
+    }
+
+    document.getElementById('result').textContent = resultText;
+}
+</script>
+
+
 </body>
 </html>
