@@ -17,7 +17,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('start');
+        return view('admin/login');
     }
 
     /**
@@ -28,6 +28,10 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+
+        if (Auth::user()->role === 'admin') {
+            return redirect()->route('admin-dashboard');
+        }
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }

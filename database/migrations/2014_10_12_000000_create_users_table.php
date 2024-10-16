@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->bigInteger('score')->default(0);
-            $table->time('time')->nullable();
-            $table->string('email')->unique()->nullable();
+            $table->enum('role', ['admin','player'])->default('player');
             $table->string('password')->nullable();
+            $table->bigInteger('score')->default(0);
+            $table->enum('status', ['Y','N'])->default('N')->nullable();;
             $table->timestamps();
         });
     }

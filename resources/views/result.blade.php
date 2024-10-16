@@ -16,6 +16,12 @@
                 margin: 0;
                 padding: 0;
             }
+
+            @layer utilities {
+                .text-outline-white {
+                    text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;
+                }
+            }
         </style>
 
         <!-- Scripts -->
@@ -47,10 +53,11 @@
             </svg>
         </div>
         <h2 class="inline bg-secondary text-text text-2xl font-medium py-1 px-14 rounded-full drop-shadow">E - Learning Elementary</h2>
-        <form method="POST" action="{{ route('register') }}" class="mt-10">
-            @csrf
-            <input type="text" name="name" placeholder="Write name here" class="text-text text-center px-16 rounded-full">
-            <button type="submit" class="block bg-button text-white font-bold px-6 py-2 mx-auto mt-5 rounded-full">START</button>
-        </form>
+        <div class="mt-10">
+            <p class="text-text text-xl text-outline-white font-bold">Your</p>
+            <p class="text-text text-3xl text-outline-white font-bold">Points</p>
+            <p class="bg-input text-xl text-center w-[20%] mx-auto mt-5 mb-10 px-12 py-2 border-double border-4 border-white rounded-full">{{ Auth::user()->score }}</p>
+        </div>
+        <button onclick="location.href='{{ route('leaderboard') }}'" class="block bg-button text-white font-bold px-6 py-2 mx-auto mt-5 rounded-full">See Leaderboard</button>
     </body>
 </html>

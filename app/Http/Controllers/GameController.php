@@ -20,19 +20,21 @@ class GameController extends Controller
         return response()->json(['message' => 'Score updated successfully', 'newScore' => $user->score]);
     }
 
-    public function saveTime(Request $request)
+    public function updateStatus(Request $request)
     {
         $user = Auth::user();
 
-        $user->time = gmdate("H:i:s", $request->time);
+        $user->status = 'Y';
         $user->save();
 
-        return response()->json(['message' => 'Time saved successfully', 'time' => $user->time]);
+        return response()->json(['message' => 'Status updated successfully']);
     }
 
     public function showLeaderboard()
     {
-        $users = User::orderBy('score', 'desc')->orderBy('time', 'asc')->get();
+        $users = User::where('role', 'player')
+            ->orderBy('score', 'desc')
+            ->get();
 
         return view('leaderboard', ['users' => $users]);
     }

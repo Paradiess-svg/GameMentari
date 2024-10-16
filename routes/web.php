@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GameController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,31 +25,35 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/1stgrade/1', function () {
-        return view('quiz/1st_grade/1');
+        return view('quiz/1');
     })->name('1stgrade-1');
     Route::get('/1stgrade/2', function () {
-        return view('quiz/1st_grade/2');
+        return view('quiz/2');
     })->name('1stgrade-2');
-
     Route::get('/2ndgrade/1', function () {
-        return view('quiz/2nd_grade/1');
+        return view('quiz/3');
     })->name('2ndgrade-1');
     Route::get('/2ndgrade/2', function () {
-        return view('quiz/2nd_grade/2');
+        return view('quiz/4');
     })->name('2ndgrade-2');
     Route::get('/2ndgrade/3', function () {
-        return view('quiz/2nd_grade/3');
+        return view('quiz/5');
     })->name('2ndgrade-3');
-
     Route::get('/3rdgrade/1', function () {
-        return view('quiz/3rd_grade/1');
+        return view('quiz/6');
     })->name('3rdgrade-1');
     Route::get('/3rdgrade/2', function () {
-        return view('quiz/3rd_grade/2');
+        return view('quiz/7');
     })->name('3rdgrade-2');
 
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin-dashboard');
+    Route::delete('/admin/dashboard/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
+
     Route::post('/update-score', [GameController::class, 'updateScore'])->name('update-score');
-    Route::post('/save-time', [GameController::class, 'saveTime'])->name('save-time');
+    Route::post('/update-status', [GameController::class, 'updateStatus'])->name('update-status');
+    Route::get('/result', function () {
+        return view('result');
+    })->name('result');
     Route::get('/leaderboard', [GameController::class, 'showLeaderboard'])->name('leaderboard');
 });
 

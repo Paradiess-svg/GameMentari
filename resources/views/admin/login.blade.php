@@ -46,10 +46,11 @@
                 </defs>
             </svg>
         </div>
-        <h2 class="inline bg-secondary text-text text-2xl font-medium py-1 px-14 rounded-full drop-shadow">E - Learning Elementary</h2>
-        <form method="POST" action="{{ route('register') }}" class="mt-10">
+        <h2 class="inline bg-secondary text-text text-2xl font-medium py-1 px-14 rounded-full drop-shadow">E - Learning Elementary - ADMIN</h2>
+        <form method="POST" action="{{ route('login') }}" class="mt-10 flex flex-col gap-2 w-1/5 mx-auto">
             @csrf
-            <input type="text" name="name" placeholder="Write name here" class="text-text text-center px-16 rounded-full">
+            <input type="text" name="name" placeholder="Name" class="text-text text-center px-16 rounded-full">
+            <input type="password" name="password" placeholder="Password" class="text-text text-center px-16 rounded-full">
             <button type="submit" class="block bg-button text-white font-bold px-6 py-2 mx-auto mt-5 rounded-full">START</button>
         </form>
     </body>
