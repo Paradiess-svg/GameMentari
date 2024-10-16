@@ -54,7 +54,7 @@
         </div>
         <h2 class="inline bg-secondary text-text text-2xl font-medium py-1 px-14 rounded-full drop-shadow">E - Learning Elementary</h2>
         <p class="text-text text-3xl text-outline-white mt-10 font-bold">Leaderboard</p>
-        <div class="bg-input w-1/2 mx-auto shadow rounded-full mt-10">
+        <div class="bg-input w-1/2 mx-auto shadow rounded-[100px] mt-10">
             <div class="p-6 text-text">
                 <table class="w-full text-center align-middle">
                     <thead>
