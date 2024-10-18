@@ -12,22 +12,26 @@
             <div class="flex justify-evenly items-center">
                 <div class="p-4 border-2 border-black rounded-lg">
                     <img src="/img/blank_words/1.jpg" class="rounded-lg" width="250" alt="">
-                    <p class="my-4 text-center text-lg font-semibold">G__dM__n_ng</p>
+                    <p class="my-4 text-center text-lg font-semibold">G__d M__n_ng</p>
                     <input type="text" id="word1" class="bg-input text-text text-center border-none rounded-full">
                 </div>
                 <div class="p-4 border-2 border-black rounded-lg">
                     <img src="/img/blank_words/2.jpg" class="rounded-lg" width="250" alt="">
-                    <p class="my-4 text-center text-lg font-semibold">G__dE__e__ng</p>
+                    <p class="my-4 text-center text-lg font-semibold">G__d E__e__ng</p>
                     <input type="text" id="word2" class="bg-input text-text text-center border-none rounded-full">
                 </div>
                 <div class="p-4 border-2 border-black rounded-lg">
                     <img src="/img/blank_words/3.jpg" class="rounded-lg" width="250" alt="">
-                    <p class="my-4 text-center text-lg font-semibold">G__o__ten__n</p>
+                    <p class="my-4 text-center text-lg font-semibold">G__d A_tern__n</p>
                     <input type="text" id="word3" class="bg-input text-text text-center border-none rounded-full">
                 </div>
             </div>
             <div class="flex flex-col items-center mt-5">
-                <button onclick="checkAnswers()" id="checkButton" class="bg-button text-white text-xl font-bold px-6 py-2 rounded-full mb-5">Check</button>
+                <button onclick="checkAnswers(), cling.play();" id="checkButton" class="bg-button text-white text-xl font-bold px-6 py-2 rounded-full mb-5">Check</button>
+                <script type="text/javascript">
+                    const cling = new Audio();
+                    cling.src = "/sound/cling.mp3";
+                    </script>
                 <div id="result" class="text-xl font-semibold"></div>
             </div>
         </div>
@@ -48,7 +52,7 @@
     </div>
     <script>
         function checkAnswers() {
-            const answers = ['GoodMorning', 'GoodEvening', 'GoodAfternoon'];
+            const answers = ['Good Morning', 'Good Evening', 'Good Afternoon'];
             const userAnswers = [
                 document.getElementById('word1').value,
                 document.getElementById('word2').value,

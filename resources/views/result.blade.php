@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/favicon.ico') }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -59,5 +60,8 @@
             <p class="bg-input text-xl text-center w-[20%] mx-auto mt-5 mb-10 px-12 py-2 border-double border-4 border-white rounded-full">{{ Auth::user()->score }}</p>
         </div>
         <button onclick="location.href='{{ route('leaderboard') }}'" class="block bg-button text-white font-bold px-6 py-2 mx-auto mt-5 rounded-full">See Leaderboard</button>
+        <audio autoplay>
+            <source src="/sound/done.mp3">
+        </audio>
     </body>
 </html>

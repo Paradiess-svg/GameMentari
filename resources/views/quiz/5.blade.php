@@ -60,7 +60,11 @@
                 </div>
             </div>
             <div class="flex flex-col items-center mt-5">
-                <button id="checkButton" onclick="checkAnswers()" class="bg-button text-white text-xl font-bold px-6 py-2 rounded-full mb-5">Check</button>
+                <button onclick="checkAnswers(), cling.play();" id="checkButton" class="bg-button text-white text-xl font-bold px-6 py-2 rounded-full mb-5">Check</button>
+                <script type="text/javascript">
+                    const cling = new Audio();
+                    cling.src = "/sound/cling.mp3";
+                    </script>
                 <div id="result" class="text-xl font-semibold"></div>
             </div>
         </div>

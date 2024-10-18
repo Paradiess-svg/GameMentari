@@ -83,14 +83,18 @@
                     </select>
                 </div>
             </div>
-            <div class="flex flex-col items-center mt-5">
-                <button onclick="checkAnswers()" id="checkButton" class="bg-button text-white text-xl font-bold px-6 py-2 rounded-full mb-5">Check</button>
+            <div class="flex flex-col items-center mt-5 mb-20">
+                <button onclick="checkAnswers(), cling.play();" id="checkButton" class="bg-button text-white text-xl font-bold px-6 py-2 rounded-full mb-5">Check</button>
+                <script type="text/javascript">
+                    const cling = new Audio();
+                    cling.src = "/sound/cling.mp3";
+                    </script>
                 <div id="result" class="text-xl font-semibold"></div>
             </div>
         </div>
         <div class="flex justify-between p-10 fixed bottom-0 left-0 w-full bg-transparent">
             <div>
-                <hr class="h-px my-1 bg-black border-0">
+                <hr class="h-px my-1 bg-black border-0 -z-10">
                 <p>1st Grade - Semester 2</p>
             </div>
             <button id="nextButton" onclick="location.href='{{ route('2ndgrade-1') }}'" class="hidden gap-2 bg-primary text-button text-xl font-bold px-6 py-2 rounded-full items-center">

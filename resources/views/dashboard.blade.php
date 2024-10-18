@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/favicon.ico') }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -16,12 +17,30 @@
                 margin: 0;
                 padding: 0;
             }
+            .countdown {
+                font-size: 6rem;
+                color: #3F1451;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: none;
+                z-index: 10;
+            }
+            @layer utilities {
+                .text-outline-white {
+                    text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;
+                }
+            }
         </style>
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="text-center">
+        <div>
+            <div id="countdown" class="countdown">3</div>
+        </div>
         <div>
             <svg class="mx-auto mt-32 mb-10" width="400" viewBox="0 0 873 184" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g filter="url(#filter0_d_216_496)">
@@ -47,13 +66,46 @@
             </svg>
         </div>
         <h2 class="inline bg-secondary text-text text-2xl font-medium py-1 px-14 rounded-full drop-shadow">E - Learning Elementary</h2>
-        <form method="GET" action="{{ route('1stgrade-1') }}" class="mt-10">
+        <div class="mt-10">
             <input type="text" name="name" placeholder="{{ Auth::user()->name }}" class="text-text text-center text-xl font-bold px-16 rounded-full" readonly>
-            <button type="submit" class="block bg-button text-white font-bold px-6 py-2 mx-auto mt-5 rounded-full">START</button>
-        </form>
+            <button type="button" onclick="startCountdown(), count.play();" id="startButton" class="block bg-button text-white font-bold px-6 py-2 mx-auto mt-5 rounded-full">START</button>
+        </div>
         <form class="absolute bottom-5 right-5" method="POST" action="{{ route('logout') }}">
             @csrf
             <button type="submit" class="bg-input text-text text-2xl font-bold px-6 py-2 rounded-full">Quit</button>
         </form>
+
+        <script type="text/javascript">
+            const count = new Audio();
+            count.src = "/sound/beep.mp3";
+            </script>
+        <script>
+            function startCountdown() {
+                const countdownElement = document.getElementById('countdown');
+                let countdown = 3;
+                countdownElement.style.display = 'block';
+                countdownElement.innerHTML = countdown;
+
+                const countdownInterval = setInterval(() => {
+                    countdown -= 1;
+                    if (countdown > 0) {
+                        countdownElement.innerHTML = countdown;
+                    } else {
+                        clearInterval(countdownInterval);
+                        countdownElement.innerHTML = 'Start!';
+
+                        setTimeout(() => {
+                            location.href = '{{ route('1stgrade-1') }}';
+                        }, 1000);
+                    }
+                }, 1000);
+
+                const startButton = document.getElementById('startButton');
+                startButton.parentNode.removeChild(startButton);
+            }
+        </script>
+                <audio autoplay>
+                    <source src="/sound/startSfx.mp3">
+                </audio>
     </body>
 </html>
