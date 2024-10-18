@@ -13,62 +13,98 @@
                 <div>
                     <img src="/img/checklist/1.png" width="200" alt="">
                     <div class="mt-2">
-                        <button class="bg-button text-white px-4 py-2 rounded-full">Play</button>
+                        <button class="bg-button text-white px-4 py-2 rounded-full" onclick="mangosteen.play();">Play</button>
+                        <script type="text/javascript">
+                            const mangosteen = new Audio();
+                            mangosteen.src = "/sound/coconu01.mp3";
+                            </script>
                         <input type="checkbox" id="option1" class="w-6 h-6 ml-2 text-secondary focus:ring-primary rounded-lg">
                     </div>
                 </div>
                 <div>
                     <img src="/img/checklist/2.png" width="200" alt="">
                     <div class="mt-2">
-                        <button class="bg-button text-white px-4 py-2 rounded-full">Play</button>
+                        <button class="bg-button text-white px-4 py-2 rounded-full" onclick="mango.play();">Play</button>
+                        <script type="text/javascript">
+                        const mango = new Audio();
+                        mango.src = "/sound/mango001.mp3";
+                        </script>
                         <input type="checkbox" id="option2" class="w-6 h-6 ml-2 text-secondary focus:ring-primary rounded-lg">
                     </div>
                 </div>
                 <div>
                     <img src="/img/checklist/3.png" width="200" alt="">
                     <div class="mt-2">
-                        <button class="bg-button text-white px-4 py-2 rounded-full">Play</button>
+                        <button class="bg-button text-white px-4 py-2 rounded-full" onclick="strawberry.play();">Play</button>
+                        <script type="text/javascript">
+                            const strawberry = new Audio();
+                            strawberry.src = "/sound/strawb01.mp3";
+                            </script>
                         <input type="checkbox" id="option3" class="w-6 h-6 ml-2 text-secondary focus:ring-primary rounded-lg">
                     </div>
                 </div>
                 <div>
                     <img src="/img/checklist/4.png" width="200" alt="">
                     <div class="mt-2">
-                        <button class="bg-button text-white px-4 py-2 rounded-full">Play</button>
+                        <button class="bg-button text-white px-4 py-2 rounded-full" onclick="watermelon.play();">Play</button>
+                        <script type="text/javascript">
+                            const watermelon = new Audio();
+                            watermelon.src = "/sound/waterm04.mp3";
+                            </script>
                         <input type="checkbox" id="option4" class="w-6 h-6 ml-2 text-secondary focus:ring-primary rounded-lg">
                     </div>
                 </div>
                 <div>
                     <img src="/img/checklist/5.png" width="200" alt="">
                     <div class="mt-2">
-                        <button class="bg-button text-white px-4 py-2 rounded-full">Play</button>
+                        <button class="bg-button text-white px-4 py-2 rounded-full" onclick="banana.play();">Play</button>
+                        <script type="text/javascript">
+                            const banana = new Audio();
+                            banana.src = "/sound/banana01.mp3";
+                            </script>
                         <input type="checkbox" id="option5" class="w-6 h-6 ml-2 text-secondary focus:ring-primary rounded-lg">
                     </div>
                 </div>
                 <div>
                     <img src="/img/checklist/6.png" width="200" alt="">
                     <div class="mt-2">
-                        <button class="bg-button text-white px-4 py-2 rounded-full">Play</button>
+                        <button class="bg-button text-white px-4 py-2 rounded-full" onclick="avocado.play();">Play</button>
+                        <script type="text/javascript">
+                            const avocado = new Audio();
+                            avocado.src = "/sound/avocad02.mp3";
+                            </script>
                         <input type="checkbox" id="option6" class="w-6 h-6 ml-2 text-secondary focus:ring-primary rounded-lg">
                     </div>
                 </div>
                 <div>
                     <img src="/img/checklist/7.png" width="200" alt="">
                     <div class="mt-2">
-                        <button class="bg-button text-white px-4 py-2 rounded-full">Play</button>
+                        <button class="bg-button text-white px-4 py-2 rounded-full" onclick="orange.play();">Play</button>
+                        <script type="text/javascript">
+                            const orange = new Audio();
+                            orange.src = "/sound/lime0001.mp3";
+                            </script>
                         <input type="checkbox" id="option7" class="w-6 h-6 ml-2 text-secondary focus:ring-primary rounded-lg">
                     </div>
                 </div>
                 <div>
                     <img src="/img/checklist/8.png" width="200" alt="">
                     <div class="mt-2">
-                        <button class="bg-button text-white px-4 py-2 rounded-full">Play</button>
+                        <button class="bg-button text-white px-4 py-2 rounded-full" onclick="apple.play();">Play</button>
+                        <script type="text/javascript">
+                            const apple = new Audio();
+                            apple.src = "/sound/tomato01.mp3";
+                            </script>
                         <input type="checkbox" id="option8" class="w-6 h-6 ml-2 text-secondary focus:ring-primary rounded-lg">
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col items-center mt-5">
-                <button id="checkButton" onclick="checkAnswers()" class="bg-button text-white text-xl font-bold px-6 py-2 rounded-full mb-5">Check</button>
+            <div class="flex flex-col items-center mt-5 mb-20">
+                <button onclick="checkAnswers(), cling.play();" id="checkButton" class="bg-button text-white text-xl font-bold px-6 py-2 rounded-full mb-5">Check</button>
+                <script type="text/javascript">
+                    const cling = new Audio();
+                    cling.src = "/sound/cling.mp3";
+                    </script>
                 <div id="result" class="text-xl font-semibold"></div>
             </div>
         </div>
@@ -87,6 +123,9 @@
             </button>
         </div>
     </div>
+
+    {{--  --}}
+
     <script>
         function checkAnswers() {
             const correctIds = ['option2', 'option3', 'option4', 'option5', 'option6'];
